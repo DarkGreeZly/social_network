@@ -138,6 +138,7 @@ export default {
     methods: {
         deletePost(id) {
             this.posts = this.posts.filter(post => post.id !== id)
+            this.user.posts_count -= 1
         },
         
         sendDirectMessage() {
