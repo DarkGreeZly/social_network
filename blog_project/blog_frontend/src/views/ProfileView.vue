@@ -136,6 +136,10 @@ export default {
     },
 
     methods: {
+        deletePost(id) {
+            this.posts = this.posts.filter(post => post.id !== id)
+        },
+        
         sendDirectMessage() {
             console.log('sendDirectMessage')
 
@@ -187,9 +191,15 @@ export default {
         submitForm() {
             console.log('submitForm', this.body)
 
+            let formData = new FormData()
+            formData.append('image', this.$refs.file.files[0])
+            formData.append('body', this.body)
+
             axios
-                .post('/post/create/', {
-                    'body': this.body
+                .post('/post/create/', formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
                 })
                 .then(response => {
                     console.log('data', response.data)

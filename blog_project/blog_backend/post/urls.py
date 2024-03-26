@@ -12,4 +12,5 @@ urlpatterns = [
     path('profile/<uuid:id>/', api.post_list_profile, name='post_list_profile'),
     path('liked_posts/<uuid:id>/', api.liked_posts_list, name='liked_posts'),
     path('categories/', api.get_categories, name='categories'),
+    path('<uuid:pk>/delete/', api.post_delete, name='post_delete'),
 ]

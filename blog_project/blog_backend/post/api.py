@@ -178,3 +178,11 @@ def get_categories(request):
     serializer = CategoriesSerializer(Categories.objects.all(), many=True)
 
     return JsonResponse(serializer.data, safe=False)
+
+
+@api_view(['DELETE'])
+def post_delete(request, pk):
+    post = Post.objects.filter(created_by=request.user).get(pk=pk)
+    post.delete()
+
+    return JsonResponse({'message': 'post deleted'})

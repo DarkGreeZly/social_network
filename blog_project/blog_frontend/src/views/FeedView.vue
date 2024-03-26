@@ -91,6 +91,10 @@ export default {
                     console.log('error', error)
                 })
         },
+        
+        deletePost(id) {
+            this.posts = this.posts.filter(post => post.id !== id)
+        },
     },
 }
 </script>
