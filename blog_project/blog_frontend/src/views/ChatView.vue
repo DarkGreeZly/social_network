@@ -115,7 +115,7 @@ export default (await import('vue')).defineComponent({
                 })
         },
         getMessages() {
-            console.log('getMessages')
+            console.log('getMessagesCool')
 
             axios
                 .get(`/chat/${this.activeConversation}/`)
